@@ -1,0 +1,45 @@
+TryHackMe - Networking Basics
+Today I learned the fundamentals of networking.
+First, what is a network?
+A network is two or more devices connected together so they can communicate and share data.
+Devices can be connected in two ways:
+Wired connections using Ethernet cables.
+Wireless connections using technologies such as Wi-Fi and Bluetooth.
+What is the Internet?
+Before understanding the Internet, we need to understand networks.
+Many homes, schools, companies, and organizations have their own networks. These are separate networks.
+When many networks are connected together around the world, it forms the Internet.
+The Internet is basically a network of networks.
+We use the Internet to communicate, share data, access websites, send emails, and connect with systems around the world.
+Internet Service Providers (ISP)
+To access the Internet, we need an Internet Service Provider (ISP).
+Examples include:
+Jio
+Bharti Airtel
+ISPs provide Internet connectivity and assign public IP addresses so our devices can communicate with other networks on the Internet.
+IP Addresses
+Every device on a network needs an address.
+This address is called an IP address.
+There are two common types:
+Private IP addresses used inside local networks.
+Public IP addresses used on the Internet.
+Public IP addresses are usually assigned by the ISP.
+Ping and ICMP
+I also learned about Ping.
+Ping uses ICMP (Internet Control Message Protocol).
+It helps determine whether another device is reachable and measures how long packets take to travel and return.
+This measurement is called latency.
+MAC Addresses
+Every network interface has a unique MAC address.
+A MAC address helps identify devices on a local network.
+The first part identifies the manufacturer, while the remaining part uniquely identifies the device.
+Key Takeaways
+A network consists of connected devices.
+Devices can communicate through wired or wireless technologies.
+The Internet is a network of networks.
+ISPs provide Internet connectivity.
+IP addresses identify devices on networks.
+Ping uses ICMP to test connectivity and latency.
+MAC addresses uniquely identify devices on local networks.
+This room helped me understand the basic building blocks of networking and how devices communicate across local networks and the Internet.
+#TryHackMe #Networking #CyberSecurity #LearningJourney #SOCAnalyst :::
