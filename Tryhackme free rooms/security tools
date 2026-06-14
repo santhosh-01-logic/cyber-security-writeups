@@ -1,0 +1,67 @@
+TryHackMe - Networking and Security Tools
+Today I learned about Internet-connected devices, threat intelligence tools, and vulnerability management.
+Internet of Things (IoT)
+IoT stands for Internet of Things.
+These are physical devices that connect to the Internet and exchange data.
+Examples include smart cameras, smart TVs, smart watches, and other connected devices.
+As more devices connect to the Internet, securing them becomes increasingly important.
+Shodan
+I learned about Shodan.
+Shodan is a search engine that helps identify devices exposed to the Internet.
+It can be used to find:
+Servers
+Routers
+Cameras
+IoT devices
+Other Internet-facing systems
+Shodan allows filtering results by country, organization, hostname, ports, and other attributes.
+This helps security professionals understand what systems are publicly accessible.
+VirusTotal
+VirusTotal is a platform used by security professionals to analyze files, URLs, domains, and IP addresses.
+It aggregates results from many antivirus vendors and security companies.
+If a suspicious file is uploaded, VirusTotal shows how different security engines classify it.
+This makes it useful for threat intelligence and malware analysis.
+Vulnerability Databases
+I learned that known vulnerabilities are stored in vulnerability databases.
+These databases help security professionals identify and track security weaknesses.
+A vulnerability is a weakness that could potentially be exploited by an attacker.
+CIA Triad
+Security professionals often evaluate the impact of vulnerabilities using three principles:
+Confidentiality
+Protecting sensitive information from unauthorized access.
+Integrity
+Ensuring information is not modified or tampered with.
+Availability
+Ensuring systems and services remain accessible when needed.
+CVSS
+CVSS (Common Vulnerability Scoring System) helps measure the severity of vulnerabilities.
+The score considers factors such as:
+Attack complexity
+Privileges required
+User interaction
+Impact on confidentiality
+Impact on integrity
+Impact on availability
+Higher scores indicate more serious vulnerabilities.
+CVE
+CVE stands for Common Vulnerabilities and Exposures.
+Each publicly known vulnerability receives a unique identifier.
+Example:
+Plain text
+CVE-2021-44228
+This allows security professionals worldwide to reference the same vulnerability consistently.
+Linux Documentation
+I also learned about the man command.
+Bash
+man ping
+The man command displays documentation and usage information for Linux commands.
+Reading documentation is an important skill because security professionals often rely on manuals and technical guides to understand tools and systems.
+Key Takeaways
+IoT devices are Internet-connected physical devices.
+Shodan helps discover Internet-facing systems.
+VirusTotal aggregates malware detection results from many vendors.
+Vulnerabilities are tracked through databases and CVEs.
+The CIA triad consists of Confidentiality, Integrity, and Availability.
+CVSS measures vulnerability severity.
+Documentation and manual pages are essential resources for learning technical tools.
+#TryHackMe #CyberSecurity #ThreatIntelligence #IoT #VirusTotal #Shodan #LearningJourney :::
