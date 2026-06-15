@@ -1,0 +1,564 @@
+=========================================
+PHASE 1 - WEB SECURITY FOUNDATION NOTES
+(HTTP + BURP SUITE + AUTHENTICATION)
+=========================================
+
+-----------------------------------------
+1. HTTP BASICS
+-----------------------------------------
+
+HTTP = HyperText Transfer Protocol
+
+It is the language used by browsers and servers to communicate.
+
+Flow:
+
+Browser ---> Request ---> Server
+Browser <--- Response --- Server
+
+Request = Question
+Response = Answer
+
+Example:
+
+GET /login HTTP/1.1
+Host: example.com
+
+Server Response:
+
+HTTP/1.1 200 OK
+
+-----------------------------------------
+2. HTTP REQUEST PARTS
+-----------------------------------------
+
+Example:
+
+POST /login HTTP/1.1
+Host: example.com
+Cookie: session=abc123
+
+username=carlos
+password=test123
+
+A request has 4 parts:
+
+1. Method
+2. Path (URL)
+3. Headers
+4. Body
+
+-----------------------------------------
+3. HTTP METHODS
+-----------------------------------------
+
+GET
+- Used to retrieve/read data
+
+Example:
+
+GET /profile
+
+POST
+- Used to send data
+
+Example:
+
+POST /login
+
+username=carlos
+password=secret
+
+IMPORTANT:
+
+GET ≠ Insecure
+POST ≠ Secure
+
+POST only means data is sent in the request body.
+
+Security comes from:
+- HTTPS
+- Authentication
+- Authorization
+- Input Validation
+
+-----------------------------------------
+4. PATH
+-----------------------------------------
+
+Example:
+
+GET /admin
+
+Path:
+
+/admin
+
+It tells the server what resource is requested.
+
+-----------------------------------------
+5. HEADERS
+-----------------------------------------
+
+Example:
+
+Host: example.com
+Cookie: session=abc123
+
+Headers contain extra information.
+
+Attackers often inspect headers because
+developers sometimes trust them too much.
+
+-----------------------------------------
+6. BODY
+-----------------------------------------
+
+Usually found in POST requests.
+
+Example:
+
+username=carlos
+password=secret
+
+User-controlled data is commonly found here.
+
+-----------------------------------------
+7. HTTP RESPONSE
+-----------------------------------------
+
+Example:
+
+HTTP/1.1 200 OK
+
+Welcome Admin
+
+Response contains:
+
+1. Status Code
+2. Headers
+3. Body
+
+-----------------------------------------
+8. COMMON STATUS CODES
+-----------------------------------------
+
+200 = Success
+
+301 = Permanent Redirect
+
+302 = Temporary Redirect
+
+403 = Forbidden
+
+404 = Not Found
+
+500 = Server Error
+
+-----------------------------------------
+9. HACKER MINDSET
+-----------------------------------------
+
+For every request ask:
+
+1. What data can I control?
+
+Examples:
+- username
+- password
+- id
+- email
+- search
+
+2. What does the server trust?
+
+Examples:
+- cookies
+- role values
+- user IDs
+- prices
+
+3. Can I change it?
+
+Example:
+
+Original:
+
+/account?id=5
+
+Modified:
+
+/account?id=1
+
+What happens?
+
+-----------------------------------------
+10. COOKIES AND SESSIONS
+-----------------------------------------
+
+HTTP is stateless.
+
+The server forgets you after each request.
+
+Solution:
+
+Sessions
+
+After login:
+
+POST /login
+
+Server sends:
+
+Set-Cookie: session=abc123
+
+Browser stores it.
+
+Future requests:
+
+Cookie: session=abc123
+
+Now the server knows who you are.
+
+-----------------------------------------
+11. WHY COOKIES MATTER
+-----------------------------------------
+
+Server thinks:
+
+session=abc123 = Carlos
+
+If an attacker steals the cookie:
+
+Cookie: session=abc123
+
+Server still thinks:
+
+session=abc123 = Carlos
+
+Result:
+
+Attacker becomes Carlos.
+
+This is called:
+
+SESSION HIJACKING
+
+Important:
+
+Password -> Creates Session
+
+Session -> Identity
+
+The session is often more valuable than
+the password.
+
+-----------------------------------------
+12. BURP SUITE BASICS
+-----------------------------------------
+
+Normal Flow:
+
+Browser ---> Website
+
+With Burp:
+
+Browser ---> Burp ---> Website
+
+Burp lets us:
+
+- See requests
+- Modify requests
+- Replay requests
+- Analyze responses
+
+-----------------------------------------
+13. BURP PROXY
+-----------------------------------------
+
+Captures traffic between browser and server.
+
+Example:
+
+GET /account?id=5
+
+Burp can see it.
+
+-----------------------------------------
+14. BURP INTERCEPT
+-----------------------------------------
+
+Acts like a pause button.
+
+Original:
+
+GET /account?id=5
+
+Modify:
+
+GET /account?id=1
+
+Then click Forward.
+
+Modified request reaches server.
+
+-----------------------------------------
+15. BURP REPEATER
+-----------------------------------------
+
+Most used Burp tool.
+
+Send a request to Repeater.
+
+Example:
+
+/account?id=1
+/account?id=2
+/account?id=3
+
+Test repeatedly without refreshing browser.
+
+Repeater = Testing Laboratory
+
+-----------------------------------------
+16. HTTP HISTORY
+-----------------------------------------
+
+Shows all requests made by the browser.
+
+Useful for finding:
+
+- Login requests
+- Admin requests
+- API requests
+- Password reset requests
+
+-----------------------------------------
+17. BURP WORKFLOW
+-----------------------------------------
+
+Step 1:
+Understand what the page does.
+
+Step 2:
+Capture the request.
+
+Step 3:
+Identify:
+
+- URL parameters
+- Body parameters
+- Cookies
+- Headers
+
+Step 4:
+Ask:
+
+"What happens if I change this?"
+
+-----------------------------------------
+18. AUTHENTICATION
+-----------------------------------------
+
+Authentication answers:
+
+"Who are you?"
+
+Examples:
+
+- Username + Password
+- OTP
+- Session Cookie
+- JWT Token
+
+-----------------------------------------
+19. AUTHENTICATION VS AUTHORIZATION
+-----------------------------------------
+
+Authentication:
+
+"Who are you?"
+
+Example:
+
+Are you Carlos?
+
+Authorization:
+
+"What can you access?"
+
+Example:
+
+Can Carlos access /admin?
+
+Easy Memory Trick:
+
+Login = Authentication
+
+Permissions = Authorization
+
+-----------------------------------------
+20. LOGIN FLOW
+-----------------------------------------
+
+User sends:
+
+POST /login
+
+username=carlos
+password=secret
+
+Server verifies credentials.
+
+Server responds:
+
+Set-Cookie: session=abc123
+
+Future requests:
+
+Cookie: session=abc123
+
+User is now authenticated.
+
+-----------------------------------------
+21. USERNAME ENUMERATION
+-----------------------------------------
+
+Bad Example:
+
+Invalid username
+
+Incorrect password
+
+Problem:
+
+Attacker learns whether a username exists.
+
+Example:
+
+administrator -> Incorrect password
+random123 -> Invalid username
+
+Attacker now knows:
+
+administrator exists.
+
+This vulnerability is called:
+
+USERNAME ENUMERATION
+
+-----------------------------------------
+22. BRUTE FORCE
+-----------------------------------------
+
+Trying many passwords.
+
+Examples:
+
+password
+123456
+qwerty
+welcome
+
+If no rate limiting exists,
+brute forcing becomes easier.
+
+-----------------------------------------
+23. ACCESS CONTROL ISSUE (IDOR)
+-----------------------------------------
+
+Example:
+
+/account?id=5
+
+Change to:
+
+/account?id=1
+
+If another user's account appears:
+
+Access Control Vulnerability
+
+Common name:
+
+IDOR
+(Insecure Direct Object Reference)
+
+-----------------------------------------
+24. SESSION SECURITY QUESTIONS
+-----------------------------------------
+
+After login ask:
+
+- How is the user identified?
+- Is there a session cookie?
+- Is the session random?
+- Can it be guessed?
+- Can it be stolen?
+- Can it be reused?
+
+-----------------------------------------
+25. PORTSWIGGER LAB MINDSET
+-----------------------------------------
+
+Before touching any payload:
+
+1. What is the website trying to do?
+
+2. Where does user input go?
+
+3. What does the server trust?
+
+4. What can I manipulate?
+
+This mindset is more important than
+memorizing payloads.
+
+-----------------------------------------
+26. WHAT TO LOOK FOR IN AUTH LABS
+-----------------------------------------
+
+Before Login:
+
+- Username Enumeration
+- Brute Force Opportunities
+- Rate Limiting
+- Different Error Messages
+
+After Login:
+
+- Session Cookies
+- Session Handling
+- Token Security
+
+-----------------------------------------
+27. KEY TAKEAWAYS
+-----------------------------------------
+
+HTTP is the foundation of web security.
+
+Burp Suite is an HTTP editor.
+
+Always identify:
+
+- Parameters
+- Cookies
+- Headers
+- User-controlled input
+
+Authentication = Who are you?
+
+Authorization = What can you access?
+
+Username Enumeration leaks valid users.
+
+Brute Force guesses passwords.
+
+Session Cookies identify users.
+
+Stealing a valid session can be as
+powerful as knowing the password.
+
+Think like a tester:
+
+"What happens if I change this?"
