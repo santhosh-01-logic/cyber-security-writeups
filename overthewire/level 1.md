@@ -33,7 +33,7 @@ cat readme
 The file displayed the password for Bandit Level 1.
 
 ## Screenshot
-![Level 0](overthewire/images/level-0.png)
+![Level 0](images/level-0.png)
 
 
 
