@@ -1,8 +1,11 @@
 TryHackMe - Networking Basics
+
+
 Today I learned the fundamentals of networking.
+
 First, what is a network?
-A network is two or more devices connected together so they can communicate and share data.
-Devices can be connected in two ways:
+ A network is two or more devices connected together so they can communicate and share data.
+ Devices can be connected in two ways:
 Wired connections using Ethernet cables.
 Wireless connections using technologies such as Wi-Fi and Bluetooth.
 What is the Internet?
