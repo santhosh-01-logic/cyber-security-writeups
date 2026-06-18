@@ -1,0 +1,49 @@
+# Bandit Level 0 → Level 1
+
+## Goal
+
+Find the password for Bandit Level 1.
+
+## Solution
+
+First, I connected to the Bandit server using SSH.
+
+```bash
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+```
+
+Here, `bandit0` is the username and `2220` is the port number used by the Bandit server.
+
+After entering the password for Bandit 0, I logged in successfully.
+
+Next, I checked the files in the current directory using:
+
+```bash
+ls
+```
+
+The output showed a file named `readme`.
+
+To view its contents, I used:
+
+```bash
+cat readme
+```
+
+The file displayed the password for Bandit Level 1.
+
+## Screenshot
+
+
+
+## Commands Used
+
+```bash
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+ls
+cat readme
+```
+
+## Result
+
+I successfully logged in to Bandit Level 0 and found the password for Bandit Level 1.
