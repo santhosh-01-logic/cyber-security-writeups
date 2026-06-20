@@ -1,0 +1,141 @@
+PortSwigger Lab Write-up: Username Enumeration via Subtly Different Responses
+
+Objective
+
+Identify a valid username by observing subtle differences in login responses, then brute-force the password for that user.
+
+Initial Understanding
+
+When I started the lab, I assumed the vulnerability was based on response timing.
+
+My thought process was:
+
+- A valid username might take longer to process.
+- Therefore, the request with the highest response time should contain the correct username.
+
+To test this idea:
+
+1. Sent login requests with different usernames.
+2. Observed the response times.
+3. Selected the usernames with the highest response times.
+4. Tried brute-forcing passwords against them.
+
+However, none of the attempts worked.
+
+Further Testing
+
+Since the slowest username did not work, I:
+
+- Tested the second slowest username.
+- Tested the third slowest username.
+- Continued testing multiple usernames based on response time.
+
+Still no success.
+
+At this stage I incorrectly believed response timing was the main indicator.
+
+Alternative Approach
+
+I then performed additional Intruder attacks.
+
+Testing Multiple Usernames
+
+I selected the top usernames that appeared interesting and tested them separately.
+
+Cluster Bomb Attack
+
+Next, I switched to a Cluster Bomb attack.
+
+Payload 1:
+
+- List of candidate usernames.
+
+Payload 2:
+
+- List of passwords.
+
+This generated a large number of requests (hundreds to thousands of combinations).
+
+Even after testing many combinations, I still could not find the correct credentials.
+
+Discovering the Actual Vulnerability
+
+After reviewing the lab solution, I realized I had been looking at the wrong indicator.
+
+The lab was not based on response timing.
+
+Instead, it relied on subtly different responses.
+
+Examples of subtle differences can include:
+
+- Different error messages
+- Extra whitespace
+- Slight spelling differences
+- Small content-length changes
+- Different response sizes
+
+Using Grep - Match / Grep - Extract
+
+To identify the difference:
+
+1. Opened Intruder settings.
+2. Used the response filtering options.
+3. Marked the known "invalid username" response.
+4. Cleared unnecessary results.
+5. Compared responses carefully.
+
+After filtering, one response appeared different from the others.
+
+Identifying the Valid Username
+
+The valid username generated a response that was slightly different from the responses for invalid usernames.
+
+This difference indicated:
+
+- The username exists.
+- The application processes it differently.
+
+At this point, I successfully identified the correct username.
+
+Finding the Password
+
+Once the valid username was known:
+
+1. Used the discovered username.
+2. Performed a password brute-force attack.
+3. Monitored the responses.
+
+One request returned a different status code and behavior.
+
+This indicated a successful login.
+
+Key Lesson Learned
+
+I initially focused only on:
+
+- Response time
+
+But the actual clue was:
+
+- Subtly different responses
+
+Important indicators during username enumeration include:
+
+- Response length
+- Content length
+- Error message variations
+- Extra spaces
+- Different status codes
+- Redirect behavior
+- Response timing (sometimes)
+
+Always compare the entire response, not just the response time.
+
+Result
+
+- Enumerated a valid username.
+- Brute-forced the password.
+- Successfully solved the lab.
+- Learned how subtle response differences can leak valid usernames.
+
+Evidence 
