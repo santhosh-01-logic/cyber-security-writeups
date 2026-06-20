@@ -439,3 +439,10 @@ Ask:
 "What can I prove is working?"
 
 That mindset applies to Python, Turbo Intruder, penetration testing, and problem solving in general.
+Evidence 1
+![images](images/turbo-intruder-first-solve.png)
+Evidence 2
+![images](images/turbo-intruder-first-solve-evidence.png)
+Evidence 3
+![images](images/turbo-second-solve-evidence.png)
+
