@@ -67,7 +67,7 @@ This displayed the password for Bandit Level 6.
 
 ## Screenshot
 
-[Insert Screenshot Here]
+![images](images/level-5.png)
 
 ## Commands Used
 
