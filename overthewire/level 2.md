@@ -43,7 +43,7 @@ The command displayed the password for Bandit Level 3.
 
 ## Screenshot
 
-[Insert Screenshot Here]
+![images](images/level-1.png)
 
 ## Commands Used
 
