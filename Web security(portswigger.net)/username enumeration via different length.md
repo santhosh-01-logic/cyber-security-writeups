@@ -122,12 +122,12 @@ Incorrect payload placement was the main reason my attack failed multiple times.
 
 
 Evidence 1
-![images](images/lab-1-evidence-1)
+![images](images/lab-1-evidence-1.png)
 
 
 Evidence 2
-![images](images/lab-1-evidence-2)
+![images](images/lab-1-evidence-2.png)
  
 
 Evidence 3
-![images](images/lab-1-evidence-3)
+![images](images/lab-1-evidence-3.png)
