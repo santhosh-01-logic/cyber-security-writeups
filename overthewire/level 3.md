@@ -73,7 +73,7 @@ This displayed the password for Bandit Level 4.
 
 ## Screenshot
 
-[Insert Screenshot Here]
+![images](images/level-2.png)
 
 ## Commands Used
 
